@@ -1,0 +1,12 @@
+.sign-up-IT_V {
+  width: 100%;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.sign-up-IT_a {
+  display: block;
+  margin: 20px;
+}
