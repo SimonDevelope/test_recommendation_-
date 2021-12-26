@@ -5,7 +5,6 @@ const mysql = require("mysql2");
 const cors = require("cors");
 const port = process.env.DB_PORT;
 const app = express();
-const bodyParser = require("body-parser");
 
 const connection = mysql.createConnection({
   host: process.env.DB_HOST,
@@ -17,6 +16,21 @@ const connection = mysql.createConnection({
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.post("/Users", (req, res) => {
+  const id = req.body.ID;
+  const password = req.body.PassWord;
+  const recommend = req.body.Recommend;
+  const sql = `INSERT INTO Users (email, password, recommend) VALUES (?,?,?)`;
+  connection.query(sql, [id, password, recommend], (err, results) => {
+    if (err) {
+      throw err;
+    } else {
+      console.log(res);
+      console.log(results);
+    }
+  });
+});
 
 connection.connect((err) => {
   if (err) throw err;

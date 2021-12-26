@@ -7,6 +7,6 @@
   align-items: center;
 }
 .sign-up-IT_a {
-  display: block;
+  display: inline-block;
   margin: 20px;
 }
