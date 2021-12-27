@@ -11,7 +11,6 @@ function SignUp() {
 
   const LoginInfo = (e) => {
     const { name, value } = e.target;
-    console.log(name, value);
     setIsInfo({
       ...isInfo,
       [name]: value,
@@ -19,11 +18,13 @@ function SignUp() {
   };
 
   const onSubmit = async () => {
-    await axios.post('http://localhost:4000/Users', {
+    const res = await axios.post('http://localhost:4000/Users', {
       ID: isInfo.id,
       PassWord: isInfo.password,
       Recommend: isInfo.recommendation,
     });
+
+    res.status === 200 ? alert('OK') : alert('Rejected');
   };
 
   return (
