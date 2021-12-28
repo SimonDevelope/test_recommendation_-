@@ -18,13 +18,21 @@ function SignUp() {
   };
 
   const onSubmit = async () => {
-    const res = await axios.post('http://localhost:4000/Users', {
-      ID: isInfo.id,
-      PassWord: isInfo.password,
-      Recommend: isInfo.recommendation,
-    });
-
-    res.status === 200 ? alert('OK') : alert('Rejected');
+    if (
+      isInfo.id === '' ||
+      isInfo.password === '' ||
+      isInfo.recommendation === ''
+    ) {
+      alert('정보를 입력해주세요.');
+    } else {
+      const res = await axios.post('http://localhost:4000/users', {
+        _id: isInfo.id,
+        password: isInfo.password,
+        recommend: isInfo.recommendation,
+      });
+      res.status === 200 ? alert('OK') : alert('Rejected');
+      location.href = '/';
+    }
   };
 
   return (
